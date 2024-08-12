@@ -1,5 +1,5 @@
 import { fontFamily } from "tailwindcss/defaultTheme";
-
+import plugin from 'tailwindcss/plugin'
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -17,6 +17,10 @@ export default {
         ring: 'hsl(var(--ring))',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
+        low:{
+          DEFAULT:'hsl(29, 63%, 56%)',
+          background: 'hsl(30, 65%, 93%)'
+        },
         primary: {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))'
@@ -68,5 +72,9 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"),
+    plugin(function({ addVariant }) {
+      addVariant('low', '&.low')
+    })
+  ],
 };

@@ -33,7 +33,7 @@ export  function TaskList() {
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
-      <main className="flex-1 p-4 space-x-4 overflow-x-auto">
+      <main className="flex-1 md:pl-4 pt-4 md:pt-0 space-x-4 overflow-x-auto mt-4">
         <div className="flex space-x-4">
           {["todo", "in-progress", "completed"].map((status) => (
             <Droppable key={status} droppableId={status}>
@@ -41,14 +41,16 @@ export  function TaskList() {
                 <div
                   {...provided.droppableProps}
                   ref={provided.innerRef}
-                  className="w-1/3 p-4 bg-white rounded-lg shadow-md"
+                  className="w-1/3 p-4 bg-muted rounded-lg shadow-md"
                 >
-                  <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center justify-center gap-2 mb-2">
+                  <span className={`w-2 h-2 ${status} rounded-full`}></span>
                     <h2 className="text-lg font-semibold">
                       {status === "todo" ? "To Do" : status === "in-progress" ? "On Progress" : "Done"}
                     </h2>
-                    <Badge variant="default">{filteredTasks.filter(task => task.status === status).length}</Badge>
+                    <Badge className="bg-[#e0e0e0] rounded-full text-muted-foreground">{filteredTasks.filter(task => task.status === status).length}</Badge>
                   </div>
+                  <hr className={`${status} h-1 mb-2`}/>
                   <div className="space-y-4">
                     {filteredTasks
                       .filter(task => task.status === status)

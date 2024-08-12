@@ -72,7 +72,7 @@ export  function TaskForm({ task }: TaskFormProps) {
         {task ? (
           <Pencil className="absolute size-4 top-3 right-10" />
         ) : (
-          <Button className="flex-shrink-0 w-full  bg-blue-600 text-white rounded-lg">
+          <Button className="flex-shrink-0 w-full  bg-[#0d062d] text-white rounded-lg">
             + Add Task
           </Button>
         )}
@@ -183,7 +183,7 @@ export  function TaskForm({ task }: TaskFormProps) {
           <DialogFooter>
             <DialogClose asChild>
               <Button
-                className="w-full bg-stone-500 font-bold text-md"
+                className="w-full bg-[#0d062d] font-bold text-md"
                 type="submit"
               >
                 {task ? "Update Task" : "Add Task"}

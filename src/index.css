@@ -15,7 +15,7 @@
     --primary-foreground: 60 9.1% 97.8%;
     --secondary: 60 4.8% 95.9%;
     --secondary-foreground: 24 9.8% 10%;
-    --muted: 60 4.8% 95.9%;
+    --muted: 210 6% 93%;
     --muted-foreground: 25 5.3% 44.7%;
     --accent: 60 4.8% 95.9%;
     --accent-foreground: 24 9.8% 10%;
@@ -73,4 +73,26 @@
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading;
   }
+}
+
+.Low {
+  @apply bg-[#f9eee3] text-[#d58d49];
+}
+
+.Medium {
+  @apply bg-orange-100 text-orange-400;
+}
+
+.High {
+  @apply bg-[#fcf1f2] text-[#d8727d];
+}
+
+.todo{
+  @apply bg-[#5030e5];
+}
+.in-progress{
+  @apply bg-[#ffa500];
+}
+.completed{
+  @apply bg-[#8bc48a];
 }
