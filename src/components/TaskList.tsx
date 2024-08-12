@@ -41,7 +41,7 @@ export  function TaskList() {
                 <div
                   {...provided.droppableProps}
                   ref={provided.innerRef}
-                  className="w-1/3 p-4 bg-muted rounded-lg shadow-md"
+                  className="w-1/3 p-4 bg-muted rounded-lg drop-shadow-lg"
                 >
                   <div className="flex items-center justify-center gap-2 mb-2">
                   <span className={`w-2 h-2 ${status} rounded-full`}></span>
