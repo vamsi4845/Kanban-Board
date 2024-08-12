@@ -14,7 +14,7 @@ interface TaskItemProps {
 export  function TaskItem({ task, index }: TaskItemProps) {
   const {deleteTask} = useContext(TaskContext) as { deleteTask: (id: string) => void };
   return (
-    <Draggable draggableId={task._id} index={index}>
+    <Draggable draggableId={task._id || `task-${index}`} index={index}>
       {(provided) => (
         <div
           ref={provided.innerRef}
@@ -24,7 +24,7 @@ export  function TaskItem({ task, index }: TaskItemProps) {
           <Card className=" relative p-4 bg-gray-50 rounded-lg shadow-md">
             <Badge variant="secondary">{task.priority}</Badge>
             <TaskForm task={task} />
-            <Trash2 className="absolute right-3 top-3 text-gray-500 size-4" onClick={() => deleteTask(task._id)} />
+            <Trash2 className="absolute right-3 top-3 text-gray-500 size-4" onClick={() => deleteTask(task._id!)} />
             {/* <Dropdown id={task._id} /> */}
             <h3 className="mt-2 font-semibold">{task.title}</h3>
             <p className="text-sm text-gray-600">
