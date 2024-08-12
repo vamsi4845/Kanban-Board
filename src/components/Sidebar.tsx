@@ -5,32 +5,34 @@ import { TaskContext } from "../context/TaskContext";
 export  function Sidebar() {
     const {tasks} = useContext(TaskContext)!;
   return (
-    <aside className="w-full h-64 md:w-1/5 p-4 space-y-4 md:space-y-4 flex flex-row md:flex-col overflow-x-auto md:overflow-x-visible">
-          <div className="flex-shrink-0 w-1/4 md:w-auto p-4 bg-white rounded-lg shadow-md">
+    <aside className="w-full h-full  md:w-1/5 p-4 space-y-4 flex flex-col md:flex-col overflow-x-auto md:overflow-x-visible">
+      <div className="flex flex-row md:flex-col md:space-y-4 space-x-4 md:space-x-0">
+          <div className="w-1/3 h-1/2 md:w-auto p-4 bg-white rounded-lg shadow-md">
             <div className="flex items-center gap-2 mb-2">
               <CircleAlertIcon className="h-6 w-6 text-red-500" />
-              <span className="font-semibold">Expired Tasks</span>
+              <span className="font-semibold">Expired</span>
             </div>
             <div className="text-3xl font-bold">
                 {tasks.filter(task => task.deadline < new Date().toISOString()).length}
             </div>
           </div>
-          <div className="flex-shrink-0 w-1/4 md:w-auto p-4 bg-white rounded-lg shadow-md">
+          <div className=" w-1/3 h-1/2 md:w-auto p-4 bg-white rounded-lg shadow-md">
             <div className="flex items-center gap-2 mb-2">
               <ClipboardListIcon className="h-6 w-6 text-orange-500" />
-              <span className="font-semibold">All Active Tasks</span>
+              <span className="font-semibold">Active</span>
             </div>
             <div className="text-3xl font-bold">
                 {tasks.length}
             </div>
           </div>
-          <div className="flex-shrink-0 w-1/4 md:w-auto p-4 bg-white rounded-lg shadow-md">
+          <div className=" w-1/3 h-1/2 md:w-auto p-4 bg-white rounded-lg shadow-md">
             <div className="flex items-center gap-2 mb-2">
               <CircleCheckIcon className="h-6 w-6 text-blue-500" />
-              <span className="font-semibold">Completed Tasks</span>
+              <span className="font-semibold">Completed</span>
             </div>
             <div className="text-3xl font-bold">{tasks.filter(task=>task.status==="completed").length}/{tasks.length}</div>
           </div>
+      </div>
           <TaskForm/>
         </aside>
   )

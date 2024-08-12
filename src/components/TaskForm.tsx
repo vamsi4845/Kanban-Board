@@ -72,7 +72,7 @@ export  function TaskForm({ task }: TaskFormProps) {
         {task ? (
           <Pencil className="absolute size-4 top-3 right-10" />
         ) : (
-          <Button className="flex-shrink-0 w-1/4 md:w-full py-3 mt-4 bg-blue-600 text-white rounded-lg">
+          <Button className="flex-shrink-0 w-full  bg-blue-600 text-white rounded-lg">
             + Add Task
           </Button>
         )}

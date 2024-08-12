@@ -29,7 +29,7 @@ export const TaskProvider = ({ children }: { children: ReactNode }) => {
 
   const fetchTasks = async () => {
     try {
-      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/tasks`);
+      const response = await axios.get(`${import.meta.env.VITE_VERCEL_RENDER_API}/tasks`);
       setTasks(response.data);
     } catch (error) {
       toast.error("Failed to fetch tasks");
@@ -50,9 +50,7 @@ export const TaskProvider = ({ children }: { children: ReactNode }) => {
 
   const addTask = async (task: Task) => {
     try{
-      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/tasks`, task);
-      // const newTask = response.data.task;
-      // setTasks(prevTasks => [...prevTasks, newTask]);
+      const response = await axios.post(`${import.meta.env.VITE_VERCEL_RENDER_API}/tasks`, task);
       await fetchTasks();
       toast.success(response.data.message);
     }catch(error){
@@ -68,7 +66,7 @@ export const TaskProvider = ({ children }: { children: ReactNode }) => {
   const updateTask = async (updatedTask: Task) => {
     setTasks(tasks.map(task => (task._id === updatedTask._id ? updatedTask : task)));
     try {
-      const response =await axios.put(`${import.meta.env.VITE_BACKEND_URL}/tasks/${updatedTask._id}`, updatedTask);
+      const response =await axios.put(`${import.meta.env.VITE_VERCEL_RENDER_API}/tasks/${updatedTask._id}`, updatedTask);
       toast.success(response.data.message);
     } catch (error) {
       if (axios.isAxiosError(error) && error.response) {
@@ -82,7 +80,7 @@ export const TaskProvider = ({ children }: { children: ReactNode }) => {
 
   const deleteTask = async (id: string) => {
     try {
-      const response = await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/tasks/${id}`);
+      const response = await axios.delete(`${import.meta.env.VITE_VERCEL_RENDER_API}/tasks/${id}`);
       setTasks(prevTasks => prevTasks.filter(task => task._id !== id));
       toast.success(response.data.message);
     } catch (error) {
