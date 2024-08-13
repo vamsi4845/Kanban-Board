@@ -11,4 +11,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Request Render
-        run: curl -X GET ${{ secrets.RENDER_BACKEND_API }}
+        run: curl -X GET ${{ secrets.VITE_VERCEL_RENDER_API }}
